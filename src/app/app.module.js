@@ -10,8 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
 var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
+var app_component_1 = require('./app.component');
+var app_routing_1 = require('./app.routing');
+var address_list_component_1 = require('./addresses/address-list.component');
+var address_detail_component_1 = require('./addresses/address-detail.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -19,11 +22,15 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                ng_bootstrap_1.NgbModule
+                ng_bootstrap_1.NgbModule,
+                app_routing_1.routing
             ],
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                address_list_component_1.AddressListComponent,
+                address_detail_component_1.AddressDetailComponent
             ],
+            providers: [app_routing_1.appRoutingProviders],
             exports: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 

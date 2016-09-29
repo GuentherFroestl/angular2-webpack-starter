@@ -15,11 +15,15 @@ module.exports = {
     },
     devtool: 'source-map',
     entry: {
-        app: [ path.resolve(rootDir, 'src', 'main') ],
-        vendor: [ path.resolve(rootDir, 'src', 'vendor') ]
+        app: [path.resolve(rootDir, 'src', 'main')],
+        vendor: [path.resolve(rootDir, 'src', 'vendor')]
     },
     module: {
         loaders: [
+            {
+                test: /\.ts$/,
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+            },
             { loader: 'raw', test: /\.(css|html)$/ },
             { exclude: /node_modules/, loader: 'ts', test: /\.ts$/ }
         ]
@@ -41,6 +45,6 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: [ '', '.js', '.ts' ]
+        extensions: ['', '.js', '.ts']
     }
 };

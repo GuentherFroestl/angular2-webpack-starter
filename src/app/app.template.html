@@ -1,17 +1,17 @@
 <div class="row">
     <div class="tx-center col-sm-12">
-        <h3>Hello World, this is my first ng2-app with bootstrap 4
-        </h3>
+        <h3>This is an app with basic routing</h3>
     </div>
-    <div class="row">
-        <div class="col-sm-4 tx-center">
-            first three columns
-        </div>
-        <div class="col-sm-4 tx-center">
-            second of three columns
-        </div>
-        <div class="col-sm-4 tx-center">
-            thirs of three columns
-        </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 tx-center">
+        <a routerLink="/addresses">Address List</a>
+        <a routerLink="/addresses/1234">Address Detail</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 tx-center">
+        <!-- Routed views go here -->
+        <router-outlet></router-outlet>
     </div>
 </div>
