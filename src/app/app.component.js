@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<div><h1>Hello World, this is my first ng2-app</h1></div>'
+            template: require('./app.template.html')
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
