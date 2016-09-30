@@ -9,24 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var address_component_1 = require('./address.component');
-var address_list_component_1 = require('./address-list.component');
-var address_detail_component_1 = require('./address-detail.component');
-var address_routing_1 = require('./address.routing');
-var AddressModule = (function () {
-    function AddressModule() {
+var AddressComponent = (function () {
+    function AddressComponent() {
     }
-    AddressModule = __decorate([
-        core_1.NgModule({
-            imports: [router_1.RouterModule, address_routing_1.adrRouting],
-            exports: [],
-            declarations: [address_component_1.AddressComponent, address_list_component_1.AddressListComponent, address_detail_component_1.AddressDetailComponent],
-            providers: [],
+    AddressComponent.prototype.ngOnInit = function () { };
+    AddressComponent = __decorate([
+        core_1.Component({
+            template: require('./address.component.html')
         }), 
         __metadata('design:paramtypes', [])
-    ], AddressModule);
-    return AddressModule;
+    ], AddressComponent);
+    return AddressComponent;
 }());
-exports.AddressModule = AddressModule;
-//# sourceMappingURL=address.module.js.map
+exports.AddressComponent = AddressComponent;
+//# sourceMappingURL=address.component.js.map
