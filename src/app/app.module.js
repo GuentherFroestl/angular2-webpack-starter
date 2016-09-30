@@ -13,8 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
 var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
-var address_list_component_1 = require('./addresses/address-list.component');
-var address_detail_component_1 = require('./addresses/address-detail.component');
+var address_module_1 = require('./addresses/address.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,12 +22,11 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 ng_bootstrap_1.NgbModule,
+                address_module_1.AddressModule,
                 app_routing_1.routing
             ],
             declarations: [
-                app_component_1.AppComponent,
-                address_list_component_1.AddressListComponent,
-                address_detail_component_1.AddressDetailComponent
+                app_component_1.AppComponent
             ],
             providers: [app_routing_1.appRoutingProviders],
             exports: [app_component_1.AppComponent],

@@ -4,20 +4,17 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders} from './app.routing';
-import { AddressListComponent } from './addresses/address-list.component';
-import { AddressDetailComponent } from './addresses/address-detail.component';
-
+import { AddressModule} from './addresses/address.module'
 
 @NgModule({
   imports: [
     BrowserModule,
     NgbModule,
+    AddressModule,
     routing
   ],
   declarations: [
-    AppComponent,
-    AddressListComponent,
-    AddressDetailComponent
+    AppComponent
   ],
   providers: [appRoutingProviders],
   exports: [ AppComponent ],
