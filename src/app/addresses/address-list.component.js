@@ -9,16 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var address_service_1 = require('./address-service');
 var AddressListComponent = (function () {
-    function AddressListComponent() {
+    function AddressListComponent(addressService) {
+        this.addressService = addressService;
+        this.addresses = [];
     }
-    AddressListComponent.prototype.ngOnInit = function () { };
+    AddressListComponent.prototype.ngOnInit = function () {
+        this.getAddress();
+    };
+    AddressListComponent.prototype.getAddress = function () {
+        var _this = this;
+        this.addressService.getAddressList()
+            .subscribe(function (addresses) { return _this.addresses = addresses; }, function (error) { return _this.errorMessage = error; });
+    };
     AddressListComponent = __decorate([
         core_1.Component({
             selector: 'address-list',
             template: require('./address-list.component.html')
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [address_service_1.AddressService])
     ], AddressListComponent);
     return AddressListComponent;
 }());
