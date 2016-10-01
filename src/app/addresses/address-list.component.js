@@ -16,12 +16,27 @@ var AddressListComponent = (function () {
         this.addresses = [];
     }
     AddressListComponent.prototype.ngOnInit = function () {
-        this.getAddress();
+        this.getAddressList();
     };
-    AddressListComponent.prototype.getAddress = function () {
+    AddressListComponent.prototype.getAddressList = function () {
         var _this = this;
         this.addressService.getAddressList()
             .subscribe(function (addresses) { return _this.addresses = addresses; }, function (error) { return _this.errorMessage = error; });
+    };
+    AddressListComponent.prototype.getAddress = function (id) {
+        var _this = this;
+        this.addressService.getAddress(id)
+            .subscribe(function (address) { return _this.selectedAddress = address; }, function (error) { return _this.errorMessage = error; });
+    };
+    AddressListComponent.prototype.fetchList = function () {
+        this.getAddressList();
+    };
+    AddressListComponent.prototype.selectAddress = function (adr) {
+        if (adr) {
+            this.selectedAddress = adr;
+            console.log("Address selected: ", adr);
+            this.getAddress(adr.id);
+        }
     };
     AddressListComponent = __decorate([
         core_1.Component({

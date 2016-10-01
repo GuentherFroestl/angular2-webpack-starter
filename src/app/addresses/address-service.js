@@ -11,13 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
+var baseUrl = "/addresses";
 var AddressService = (function () {
     function AddressService(http) {
         this.http = http;
-        this.addressListUrl = '/addresslist.json'; // URL to web API
+        this.addressListUrl = baseUrl + "/list.json"; // URL to web API
     }
     AddressService.prototype.getAddressList = function () {
         return this.http.get(this.addressListUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    AddressService.prototype.getAddress = function (id) {
+        var url = baseUrl + "/" + id + "/" + id + ".json";
+        return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
     };

@@ -1,4 +1,12 @@
-<h5>Address List</h5>
+
+<div class="row">
+    <div class="col-sm-2"><h5>Address List</h5>
+    </div>
+    <div class="col-sm-1">
+        <input class="btn btn-primary" 
+        (click)="fetchList()"
+        type="button" value="Fetch List">
+    </div>
 <div class="row">
     <div class="col-sm-12">
         <table class="table table-hover">
@@ -12,7 +20,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let adr of addresses">
+                <tr *ngFor="let adr of addresses"
+                (click)= "selectAddress(adr)">
                     <th scope="row">{{adr.id}}</th>
                     <td>{{adr.firstName}}</td>
                     <td>{{adr.name}}</td>

@@ -8,18 +8,36 @@ import { Address } from './address-model';
 })
 export class AddressListComponent implements OnInit {
     private addresses: Address[] = [];
+    private selectedAddress: Address;
     private errorMessage: any;
 
     constructor(private addressService: AddressService) { }
 
     ngOnInit() {
-        this.getAddress();
-     }
+        this.getAddressList();
+    }
 
-    getAddress() {
+    getAddressList() {
         this.addressService.getAddressList()
             .subscribe(
             addresses => this.addresses = addresses,
             error => this.errorMessage = <any>error);
+    }
+
+    getAddress(id: string | number) {
+        this.addressService.getAddress(id)
+            .subscribe(
+            address => this.selectedAddress = address,
+            error => this.errorMessage = <any>error);
+    }
+    fetchList() {
+        this.getAddressList();
+    }
+    selectAddress(adr: Address) {
+        if (adr) {
+            this.selectedAddress = adr;
+            console.log("Address selected: ", adr);
+            this.getAddress(adr.id);
+        }
     }
 }
