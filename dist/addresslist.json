@@ -1,0 +1,36 @@
+[
+    {
+        "id": "1",
+        "name": "Tester",
+        "firstName": "Tom",
+        "type": "Person",
+        "gender": "male"
+    },
+    {
+        "id": "2",
+        "name": "Developer",
+        "firstName": "David",
+        "type": "Person",
+        "gender": "male"
+    },
+    {
+        "id": "3",
+        "name": "Chef",
+        "firstName": "Carl",
+        "type": "Person",
+        "gender": "male"
+    },
+    {
+        "id": "4",
+        "name": "Cook",
+        "firstName": "Thomas",
+        "type": "Person",
+        "gender": "male"
+    },{
+        "id": "5",
+        "name": "Netty",
+        "firstName": "Nancy",
+        "type": "Person",
+        "gender": "female"
+    }
+]

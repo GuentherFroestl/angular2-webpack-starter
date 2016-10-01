@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var platform_browser_1 = require('@angular/platform-browser');
+var address_service_1 = require('./address-service');
 var address_component_1 = require('./address.component');
 var address_list_component_1 = require('./address-list.component');
 var address_detail_component_1 = require('./address-detail.component');
@@ -19,10 +21,10 @@ var AddressModule = (function () {
     }
     AddressModule = __decorate([
         core_1.NgModule({
-            imports: [router_1.RouterModule, address_routing_1.adrRouting],
+            imports: [router_1.RouterModule, platform_browser_1.BrowserModule, address_routing_1.adrRouting],
             exports: [],
             declarations: [address_component_1.AddressComponent, address_list_component_1.AddressListComponent, address_detail_component_1.AddressDetailComponent],
-            providers: [],
+            providers: [address_service_1.AddressService],
         }), 
         __metadata('design:paramtypes', [])
     ], AddressModule);

@@ -14,6 +14,7 @@ var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
 var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
 var address_module_1 = require('./addresses/address.module');
+var http_1 = require('@angular/http');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,6 +23,7 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 ng_bootstrap_1.NgbModule,
+                http_1.HttpModule,
                 address_module_1.AddressModule,
                 app_routing_1.routing
             ],

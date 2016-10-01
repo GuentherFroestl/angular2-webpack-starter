@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders} from './app.routing';
-import { AddressModule} from './addresses/address.module'
+import { AddressModule} from './addresses/address.module';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
     BrowserModule,
     NgbModule,
+    HttpModule,
     AddressModule,
     routing
   ],
