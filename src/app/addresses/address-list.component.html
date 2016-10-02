@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let adr of addresses"
-                (click)= "selectAddress(adr)">
+                (dblclick)="goTo(adr)">
                     <th scope="row">{{adr.id}}</th>
                     <td>{{adr.firstName}}</td>
                     <td>{{adr.name}}</td>

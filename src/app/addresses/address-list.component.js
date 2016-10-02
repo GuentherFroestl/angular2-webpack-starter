@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var address_service_1 = require('./address-service');
 var AddressListComponent = (function () {
-    function AddressListComponent(addressService) {
+    function AddressListComponent(addressService, router) {
         this.addressService = addressService;
+        this.router = router;
         this.addresses = [];
     }
     AddressListComponent.prototype.ngOnInit = function () {
@@ -23,19 +25,21 @@ var AddressListComponent = (function () {
         this.addressService.getAddressList()
             .subscribe(function (addresses) { return _this.addresses = addresses; }, function (error) { return _this.errorMessage = error; });
     };
-    AddressListComponent.prototype.getAddress = function (id) {
-        var _this = this;
-        this.addressService.getAddress(id)
-            .subscribe(function (address) { return _this.selectedAddress = address; }, function (error) { return _this.errorMessage = error; });
-    };
     AddressListComponent.prototype.fetchList = function () {
         this.getAddressList();
     };
-    AddressListComponent.prototype.selectAddress = function (adr) {
+    AddressListComponent.prototype.goTo = function (adr) {
         if (adr) {
             this.selectedAddress = adr;
-            console.log("Address selected: ", adr);
-            this.getAddress(adr.id);
+            console.log("goto: ", adr);
+            this.router.navigate([
+                "/addresses",
+                {
+                    outlets: {
+                        primary: "" + adr.id,
+                        navi: "navi"
+                    }
+                }]);
         }
     };
     AddressListComponent = __decorate([
@@ -43,7 +47,7 @@ var AddressListComponent = (function () {
             selector: 'address-list',
             template: require('./address-list.component.html')
         }), 
-        __metadata('design:paramtypes', [address_service_1.AddressService])
+        __metadata('design:paramtypes', [address_service_1.AddressService, router_1.Router])
     ], AddressListComponent);
     return AddressListComponent;
 }());

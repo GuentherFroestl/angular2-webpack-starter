@@ -9,16 +9,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var address_service_1 = require('./address-service');
 var AddressDetailComponent = (function () {
-    function AddressDetailComponent() {
+    function AddressDetailComponent(route, addressService) {
+        this.route = route;
+        this.addressService = addressService;
     }
-    AddressDetailComponent.prototype.ngOnInit = function () { };
+    AddressDetailComponent.prototype.ngOnInit = function () {
+        this.registerRouteListener();
+    };
+    AddressDetailComponent.prototype.registerRouteListener = function () {
+        var _this = this;
+        this.route.params.forEach(function (params) {
+            if (params['id']) {
+                _this.selectedId = +params['id'];
+                _this.getAddress(_this.selectedId);
+            }
+        });
+    };
+    AddressDetailComponent.prototype.getAddress = function (id) {
+        var _this = this;
+        this.addressService.getAddress(id)
+            .subscribe(function (address) { return _this.selectedAddress = address; }, function (error) { return _this.errorMessage = error; });
+    };
     AddressDetailComponent = __decorate([
         core_1.Component({
             selector: 'address-detail',
             template: require('./address-detail.component.html')
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, address_service_1.AddressService])
     ], AddressDetailComponent);
     return AddressDetailComponent;
 }());

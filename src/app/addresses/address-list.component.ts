@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Routes, Router } from '@angular/router';
 import { AddressService} from './address-service';
 import { Address } from './address-model';
 
@@ -11,7 +12,9 @@ export class AddressListComponent implements OnInit {
     private selectedAddress: Address;
     private errorMessage: any;
 
-    constructor(private addressService: AddressService) { }
+    constructor(
+        private addressService: AddressService,
+        private router: Router) { }
 
     ngOnInit() {
         this.getAddressList();
@@ -24,20 +27,22 @@ export class AddressListComponent implements OnInit {
             error => this.errorMessage = <any>error);
     }
 
-    getAddress(id: string | number) {
-        this.addressService.getAddress(id)
-            .subscribe(
-            address => this.selectedAddress = address,
-            error => this.errorMessage = <any>error);
-    }
     fetchList() {
         this.getAddressList();
     }
-    selectAddress(adr: Address) {
+
+    goTo(adr: Address) {
         if (adr) {
             this.selectedAddress = adr;
-            console.log("Address selected: ", adr);
-            this.getAddress(adr.id);
+            console.log("goto: ", adr);
+            this.router.navigate([
+                `/addresses`,
+                {
+                    outlets: {
+                        primary: `${adr.id}`,
+                        navi: `navi`
+                    }
+                }]);
         }
     }
 }
