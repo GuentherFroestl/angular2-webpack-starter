@@ -12,20 +12,57 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
 var baseUrl = "/addresses";
+var addressListUrl = baseUrl + "/list.json"; // URL to web API
+var AddressNavi = (function () {
+    function AddressNavi() {
+    }
+    AddressNavi.prototype.getLength = function () {
+        if (this.addressList) {
+            return this.addressList.length;
+        }
+        else {
+            return 0;
+        }
+    };
+    AddressNavi.prototype.getPosition = function (offset) {
+        var res = 0;
+        if (this.addressList && this.currentAddress) {
+            for (var i in this.addressList) {
+                if (this.addressList[i].id === this.currentAddress.id) {
+                    res = +i;
+                    break;
+                }
+            }
+            return res + offset;
+        }
+    };
+    return AddressNavi;
+}());
+exports.AddressNavi = AddressNavi;
 var AddressService = (function () {
-    function AddressService(http) {
-        this.http = http;
-        this.addressListUrl = baseUrl + "/list.json"; // URL to web API
+    function AddressService(_http) {
+        this._http = _http;
+        this.navi = new AddressNavi();
     }
     AddressService.prototype.getAddressList = function () {
-        return this.http.get(this.addressListUrl)
+        var _this = this;
+        return this._http.get(addressListUrl)
             .map(this.extractData)
+            .do(function (data) { return _this.navi.addressList = data; })
             .catch(this.handleError);
     };
     AddressService.prototype.getAddress = function (id) {
+        var _this = this;
         var url = baseUrl + "/" + id + "/" + id + ".json";
-        return this.http.get(url)
+        return this._http.get(url)
             .map(this.extractData)
+            .do(function (data) {
+            _this.navi.currentAddress = data;
+            if (_this.navi.addressList === undefined || _this.navi.addressList.length === 0) {
+                _this.navi.addressList = [];
+                _this.navi.addressList.push(_this.navi.currentAddress);
+            }
+        })
             .catch(this.handleError);
     };
     AddressService.prototype.extractData = function (res) {

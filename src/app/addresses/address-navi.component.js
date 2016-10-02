@@ -9,8 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var address_service_1 = require('./address-service');
 var AddressNaviComponent = (function () {
-    function AddressNaviComponent() {
+    function AddressNaviComponent(addressService) {
+        this.addressService = addressService;
+        this.navi = addressService.navi;
     }
     AddressNaviComponent.prototype.ngOnInit = function () { };
     AddressNaviComponent = __decorate([
@@ -18,7 +21,7 @@ var AddressNaviComponent = (function () {
             selector: 'address-navi',
             template: require('./address-navi.component.html')
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [address_service_1.AddressService])
     ], AddressNaviComponent);
     return AddressNaviComponent;
 }());
