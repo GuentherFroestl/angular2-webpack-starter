@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var address_service_1 = require('./address-service');
+var address_rest_service_1 = require('./address-rest-service');
 var AddressListComponent = (function () {
     function AddressListComponent(addressService, router) {
         this.addressService = addressService;
@@ -22,7 +22,7 @@ var AddressListComponent = (function () {
     };
     AddressListComponent.prototype.getAddressList = function () {
         var _this = this;
-        this.addressService.getAddressList()
+        this.addressService.getListOfEntities()
             .subscribe(function (addresses) { return _this.addresses = addresses; }, function (error) { return _this.errorMessage = error; });
     };
     AddressListComponent.prototype.fetchList = function () {
@@ -47,7 +47,7 @@ var AddressListComponent = (function () {
             selector: 'address-list',
             template: require('./address-list.component.html')
         }), 
-        __metadata('design:paramtypes', [address_service_1.AddressService, router_1.Router])
+        __metadata('design:paramtypes', [address_rest_service_1.AddressRestService, router_1.Router])
     ], AddressListComponent);
     return AddressListComponent;
 }());

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Routes, Router } from '@angular/router';
 import { AddressService} from './address-service';
+import { AddressRestService} from './address-rest-service';
 import { Address } from './address-model';
 
 @Component({
@@ -13,7 +14,7 @@ export class AddressListComponent implements OnInit {
     private errorMessage: any;
 
     constructor(
-        private addressService: AddressService,
+        private addressService: AddressRestService,
         private router: Router) { }
 
     ngOnInit() {
@@ -21,7 +22,7 @@ export class AddressListComponent implements OnInit {
     }
 
     getAddressList() {
-        this.addressService.getAddressList()
+      this.addressService.getListOfEntities()
             .subscribe(
             addresses => this.addresses = addresses,
             error => this.errorMessage = <any>error);

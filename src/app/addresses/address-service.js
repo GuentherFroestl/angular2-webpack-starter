@@ -25,8 +25,8 @@ var AddressService = (function () {
     AddressService.prototype.getAddress = function (id) {
         var url = baseUrl + "/" + id + "/" + id + ".json";
         return this.http.get(url)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .catch(this.handleError)
+            .map(this.extractData);
     };
     AddressService.prototype.extractData = function (res) {
         var data = res.json();

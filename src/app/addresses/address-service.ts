@@ -20,8 +20,9 @@ export class AddressService {
     getAddress(id: number | string): Observable<Address> {
         let url : string = `${baseUrl}/${id}/${id}.json`; 
         return this.http.get(url)
+        .catch(this.handleError)
             .map(this.extractData)
-            .catch(this.handleError);
+            ;
     }
 
     private extractData(res: Response) {

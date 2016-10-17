@@ -13,11 +13,13 @@ var router_1 = require('@angular/router');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var address_service_1 = require('./address-service');
+var address_rest_service_1 = require('./address-rest-service');
 var address_component_1 = require('./address.component');
 var address_list_component_1 = require('./address-list.component');
 var address_detail_component_1 = require('./address-detail.component');
 var address_navi_component_1 = require('./address-navi.component');
 var address_routing_1 = require('./address.routing');
+var http_1 = require('fnt-service-lib/node_modules/@angular/http');
 var AddressModule = (function () {
     function AddressModule() {
     }
@@ -25,8 +27,12 @@ var AddressModule = (function () {
         core_1.NgModule({
             imports: [router_1.RouterModule, platform_browser_1.BrowserModule, forms_1.FormsModule, address_routing_1.adrRouting],
             exports: [],
-            declarations: [address_component_1.AddressComponent, address_list_component_1.AddressListComponent, address_detail_component_1.AddressDetailComponent, address_navi_component_1.AddressNaviComponent],
-            providers: [address_service_1.AddressService],
+            declarations: [
+                address_component_1.AddressComponent,
+                address_list_component_1.AddressListComponent,
+                address_detail_component_1.AddressDetailComponent,
+                address_navi_component_1.AddressNaviComponent],
+            providers: [http_1.Http, address_service_1.AddressService, address_rest_service_1.AddressRestService],
         }), 
         __metadata('design:paramtypes', [])
     ], AddressModule);
