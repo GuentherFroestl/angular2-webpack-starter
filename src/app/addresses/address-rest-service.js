@@ -15,7 +15,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var fnt_service_lib_1 = require('fnt-service-lib');
 var core_1 = require('@angular/core');
-var http_1 = require('fnt-service-lib/node_modules/@angular/http');
+var http_1 = require('@angular/http');
 var defaultBaseUrl = "/addresses";
 var AddressRestService = (function (_super) {
     __extends(AddressRestService, _super);
@@ -30,4 +30,17 @@ var AddressRestService = (function (_super) {
     return AddressRestService;
 }(fnt_service_lib_1.AbstractRestClient));
 exports.AddressRestService = AddressRestService;
+var FNTSoftwareCatalogRestClient = (function (_super) {
+    __extends(FNTSoftwareCatalogRestClient, _super);
+    function FNTSoftwareCatalogRestClient(myhttp) {
+        _super.call(this, myhttp, fnt_service_lib_1.EnvironmentType.DEV, fnt_service_lib_1.ServiceId.SOFTWARE_CATALOG);
+        this.myhttp = myhttp;
+    }
+    FNTSoftwareCatalogRestClient = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], FNTSoftwareCatalogRestClient);
+    return FNTSoftwareCatalogRestClient;
+}(fnt_service_lib_1.AbstractRestClient));
+exports.FNTSoftwareCatalogRestClient = FNTSoftwareCatalogRestClient;
 //# sourceMappingURL=address-rest-service.js.map

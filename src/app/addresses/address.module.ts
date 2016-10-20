@@ -11,7 +11,6 @@ import { AddressDetailComponent }   from './address-detail.component';
 import { AddressNaviComponent }   from './address-navi.component';
 
 import { adrRouting } from './address.routing';
-import { Http} from 'fnt-service-lib/node_modules/@angular/http';
 
 @NgModule({
   imports: [RouterModule, BrowserModule, FormsModule, adrRouting],
@@ -21,6 +20,6 @@ import { Http} from 'fnt-service-lib/node_modules/@angular/http';
     AddressListComponent,
     AddressDetailComponent,
     AddressNaviComponent],
-  providers: [Http,AddressService, AddressRestService],
+  providers: [AddressService, AddressRestService],
 })
 export class AddressModule { }

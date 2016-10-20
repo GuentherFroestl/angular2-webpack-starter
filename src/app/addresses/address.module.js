@@ -19,7 +19,6 @@ var address_list_component_1 = require('./address-list.component');
 var address_detail_component_1 = require('./address-detail.component');
 var address_navi_component_1 = require('./address-navi.component');
 var address_routing_1 = require('./address.routing');
-var http_1 = require('fnt-service-lib/node_modules/@angular/http');
 var AddressModule = (function () {
     function AddressModule() {
     }
@@ -32,7 +31,7 @@ var AddressModule = (function () {
                 address_list_component_1.AddressListComponent,
                 address_detail_component_1.AddressDetailComponent,
                 address_navi_component_1.AddressNaviComponent],
-            providers: [http_1.Http, address_service_1.AddressService, address_rest_service_1.AddressRestService],
+            providers: [address_service_1.AddressService, address_rest_service_1.AddressRestService],
         }), 
         __metadata('design:paramtypes', [])
     ], AddressModule);

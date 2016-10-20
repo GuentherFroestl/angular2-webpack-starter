@@ -43,9 +43,6 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
       template: path.resolve(rootDir, 'src', 'index.html')
-    }),
-    new webpackLinkPlugin({
-      localModule: path.resolve(rootDir, '../fnt-service-lib')
     })
   ],
   resolve: {
